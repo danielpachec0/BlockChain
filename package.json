@@ -1,0 +1,20 @@
+{
+  "name": "bcProject",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest --watchAll",
+    "devTest": "nodemon devTest"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "jest": "^25.4.0",
+    "nodemon": "^2.0.3"
+  },
+  "dependencies": {
+    "crypto-js": "^4.0.0"
+  }
+}
