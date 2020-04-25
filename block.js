@@ -1,3 +1,4 @@
+CryptoJS = require('crypto-js');
 const SHA256 = require('crypto-js/sha256')
 
 class Block {
@@ -23,14 +24,19 @@ class Block {
     static mineBlock(lastBlock, data){
         const timeStamp = Date.now();
         const lastHash = lastBlock.hash;
-        const hash = Block.hash(timeStamp, lastBlock, data);
-
+        const hash = Block.hash(timeStamp, lastHash, data);
         return new this(timeStamp, lastHash, hash, data);
     }
 
-    static hash(timeStamp,lasthash, data){
-        return SHA256(`${timeStamp}${lasthash}${data}`.toString());
+    static hash(timeStamp,lastHash, data){
+        return SHA256(`${timeStamp}${lastHash}${data}`.toString());
     }
+
+    static blockHash(block){
+        const { timeStamp, lastHash, data} = block;
+        return Block.hash(timeStamp, lastHash, data);
+    }
+    
 }
 
 module.exports = Block;
