@@ -29,7 +29,7 @@ class Block {
     }
 
     static hash(timeStamp,lastHash, data){
-        return SHA256(`${timeStamp}${lastHash}${data}`.toString());
+        return `${SHA256(`${timeStamp}${lastHash}${data}`.toString())}`;
     }
 
     static blockHash(block){
