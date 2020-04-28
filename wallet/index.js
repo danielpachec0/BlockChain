@@ -14,6 +14,10 @@ class Wallet{
             Blance: ${this.balance}
         `
     };
+
+    sign(dataHash){
+        return this.keypair.sign(dataHash);
+    }
 }
 
 module.exports = Wallet;

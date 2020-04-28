@@ -1,5 +1,6 @@
 const express = require('express');
 const Blockchain = require('../blockchain');
+const Wallet = require('../wallet');
 const bodyParser = require('body-parser')
 const P2pServer = require('./p2p-server')
 
