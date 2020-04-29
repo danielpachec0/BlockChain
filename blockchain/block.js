@@ -14,7 +14,7 @@ class Block {
 
     toString(){
         return `Block -
-                Timestamp : ${this.timeStamp}
+                TimeStamp : ${this.timeStamp}
                 Last Hash : ${this.lastHash}
                 Hash      : ${this.hash}
                 Nonce     : ${this.nonce}
