@@ -4,6 +4,7 @@ const Wallet = require('../wallet');
 const bodyParser = require('body-parser')
 const P2pServer = require('./p2p-server')
 const TransactionPoll = require('../wallet/transactionPool');
+const Miner = require('./miner');
 
 const HTTP_PORT = process.env.HTTP_PORT || 3001;
 
@@ -12,6 +13,7 @@ const bc = new Blockchain;
 const wallet = new Wallet();
 const tp = new TransactionPoll();
 const p2pServer = new P2pServer(bc, tp);
+const miner = new Miner(bc, tp, wallet, p2pServer);
 
 app.use(bodyParser.json());
 
@@ -26,6 +28,12 @@ app.post('/mine', (req, res) => {
     p2pServer.syncChains();
 
     res.redirect('/blocks');
+})
+
+app.get('/mine-transactions', (req, res) => {
+    const block = miner.mine();
+    console.log(`nNew block added: ${block.toString()}`);
+    res.redirect('/blocks')
 })
 
 
